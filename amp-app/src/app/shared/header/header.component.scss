@@ -1,0 +1,6 @@
+@import "../../../_variables.scss";
+
+:host {
+  overflow: visible;
+  height: $header-height;
+}

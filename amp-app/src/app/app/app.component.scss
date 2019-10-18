@@ -1,0 +1,18 @@
+@import "../../_variables.scss";
+
+:host {
+  header, footer {
+    background: $header-color;
+    & > * {
+      max-width: $body-width;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+    }
+  }
+  article {
+    display: block;
+    max-width: $body-width;
+    margin: 0 auto;
+  }
+}
