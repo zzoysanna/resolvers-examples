@@ -1,6 +1,6 @@
-import { CourseInterface } from "./course";
+import { ICourse } from "./course";
 
-export class Course implements CourseInterface {
+export class Course implements ICourse {
   constructor(
     public id: string,
     public title: string,
