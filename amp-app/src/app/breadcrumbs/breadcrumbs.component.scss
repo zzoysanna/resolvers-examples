@@ -1,0 +1,13 @@
+@import "../../variables";
+
+:host {
+  display: block;
+  background: white;
+  div {
+    max-width: $body-width;
+    height: $header-height;
+    margin: 0 auto;
+    line-height: $header-height;
+    font-weight: 600;
+  }
+}

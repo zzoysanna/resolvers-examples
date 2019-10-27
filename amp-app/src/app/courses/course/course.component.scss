@@ -1,10 +1,38 @@
+@import "../../../variables";
+
 :host {
-  display: block;
+  display: flex;
+  align-items: center;
   overflow: visible;
   background: white;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  padding: 24px;
+  box-shadow: 0 1px 24px 0 $shadow;
+  h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  p {
+    margin: 0;
+    line-height: 1.7;
+  }
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  .time {
+    color: $gray-color;
+    font-size: 12px;
+  }
+  .course-buttons {
+    flex: 0 0 260px;
+    text-align: center;
+  }
+  amp-edit-button {
+    margin-right: 12px;
+  }
+
 }

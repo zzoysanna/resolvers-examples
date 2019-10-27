@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Course } from '../shared/course.model';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Course} from "../shared/course.model";
 
 @Component({
   selector: 'amp-course',
@@ -8,6 +8,9 @@ import { Course } from '../shared/course.model';
 })
 export class CourseComponent implements OnInit {
 
+  @Output()
+  public delete = new EventEmitter<string>();
+
   @Input()
   public course: Course;
 
@@ -15,6 +18,14 @@ export class CourseComponent implements OnInit {
   }
 
   public ngOnInit() {
+  }
+
+  public onEdit(): void {
+    console.log('edit');
+  }
+
+  public onDelete(): void {
+    this.delete.next(this.course.id);
   }
 
 }
