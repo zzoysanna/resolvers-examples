@@ -1,6 +1,9 @@
 @import "../../_variables.scss";
 
 :host {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   header, footer {
     background: $header-color;
     & > * {
@@ -10,9 +13,14 @@
       align-items: center;
     }
   }
-  article {
+  main {
     display: block;
     max-width: $body-width;
     margin: 0 auto;
+    flex: 1;
+  }
+
+  amp-search {
+    margin: 24px 0;
   }
 }

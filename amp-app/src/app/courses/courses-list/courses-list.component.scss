@@ -3,4 +3,18 @@
 :host {
   display: block;
   overflow: visible;
+  button {
+    display: block;
+    background: white;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    padding: 12px;
+    box-shadow: 0 1px 24px 0 $shadow;
+    border: 0;
+    cursor: pointer;
+  }
+  amp-add-course {
+    margin-bottom: 12px;
+  }
 }
