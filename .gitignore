@@ -5,6 +5,10 @@
 /tmp
 /out-tsc
 /docs
+/amp-app/dist
+/amp-app/tmp
+/amp-app/out-tsc
+/amp-app/docs
 
 # dependencies
 /amp-app/node_modules
