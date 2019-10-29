@@ -11,7 +11,6 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { LoginComponent } from './login/login.component';
 import { LogoffComponent } from './logoff/logoff.component';
 import { SearchComponent } from './search/search.component';
-import { AddCourseComponent } from './add-course/add-course.component';
 import { FormsModule } from "@angular/forms";
 
 @NgModule({
@@ -24,7 +23,6 @@ import { FormsModule } from "@angular/forms";
     LoginComponent,
     LogoffComponent,
     SearchComponent,
-    AddCourseComponent,
   ],
   imports: [
     BrowserModule,

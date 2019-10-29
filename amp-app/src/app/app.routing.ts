@@ -4,9 +4,13 @@ import {CoursesListComponent} from "./courses/courses-list/courses-list.componen
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'courses',
     component: CoursesListComponent,
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'courses',
+  },
 
 ];
 

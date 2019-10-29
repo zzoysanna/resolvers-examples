@@ -4,6 +4,7 @@ import { EditButtonComponent } from './edit-button/edit-button.component';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { CourseComponent } from "./course/course.component";
 import { CoursesListComponent } from "./courses-list/courses-list.component";
+import { AddCourseComponent } from "./add-course/add-course.component";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { CoursesListComponent } from "./courses-list/courses-list.component";
     CourseComponent,
     CoursesListComponent,
     EditButtonComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    AddCourseComponent,
   ],
   imports: [
     CommonModule

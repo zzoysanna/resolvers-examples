@@ -25,7 +25,7 @@ export class CourseComponent implements OnInit {
   }
 
   public onDelete(): void {
-    this.delete.next(this.course.id);
+    this.delete.emit(this.course.id);
   }
 
 }
