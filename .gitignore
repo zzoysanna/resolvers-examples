@@ -9,6 +9,7 @@
 /amp-app/tmp
 /amp-app/out-tsc
 /amp-app/docs
+/amp-app/coverage
 
 # dependencies
 /amp-app/node_modules
