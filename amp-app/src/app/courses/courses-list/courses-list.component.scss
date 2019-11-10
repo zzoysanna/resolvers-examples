@@ -14,7 +14,31 @@
     border: 0;
     cursor: pointer;
   }
+  amp-course {
+    border: 3px solid transparent;
+    &.top {
+      background: $top-color;
+      position: relative;
+      &:before {
+        content: '\2605';
+        position: absolute;
+        background: $star-bg;
+        color: $star-color;
+        padding: 5px;
+        font-size: 20px;
+        top: -3px;
+        right: 1.5rem;
+      }
+    }
+  }
   amp-add-course {
     margin-bottom: 12px;
+  }
+  amp-search {
+    margin: 24px 0;
+  }
+  .nodata {
+    text-align: center;
+    margin: 2rem 0;
   }
 }

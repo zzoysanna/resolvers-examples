@@ -10,6 +10,7 @@ const COURSE = {
   creationDate: '1 Jan',
   duration: 10,
   description: 'test test',
+  topRated: true,
 };
 
 describe('CoursesListComponent', () => {
