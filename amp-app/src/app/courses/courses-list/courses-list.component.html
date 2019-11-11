@@ -4,7 +4,7 @@
 ></amp-search>
 <amp-add-course></amp-add-course>
 
-<ng-container *ngIf="filteredCourses; else noDataMessage">
+<ng-container *ngIf="filteredCourses && filteredCourses.length; else noDataMessage">
   <amp-course
     *ngFor="let course of filteredCourses | orderBy:'creationDate' "
     [course]="course"

@@ -11,7 +11,7 @@ export class OrderByPipe implements PipeTransform {
       case 'creationDate':
         return array.sort((item1, item2) => this.compareDates(item1[fieldName], item2[fieldName]));
       case 'title':
-        return array.filter(item => (item.title.toLowerCase()).includes(query));
+        return array.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
       default:
         return array;
     }
