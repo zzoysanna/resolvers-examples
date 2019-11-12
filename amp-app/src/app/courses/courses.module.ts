@@ -5,6 +5,12 @@ import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { CourseComponent } from "./course/course.component";
 import { CoursesListComponent } from "./courses-list/courses-list.component";
 import { AddCourseComponent } from "./add-course/add-course.component";
+import { DateBorderDirective } from './date-border/date-border.directive';
+import { MatIconModule } from "@angular/material";
+import { DurationPipe } from './duration-pipe/duration.pipe';
+import { OrderByPipe } from './order-by-pipe/order-by.pipe';
+import { SearchComponent } from "./search/search.component";
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -14,9 +20,15 @@ import { AddCourseComponent } from "./add-course/add-course.component";
     EditButtonComponent,
     DeleteButtonComponent,
     AddCourseComponent,
+    SearchComponent,
+    DateBorderDirective,
+    DurationPipe,
+    OrderByPipe,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    FormsModule,
   ],
 })
 export class CoursesModule { }

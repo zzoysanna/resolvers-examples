@@ -1,7 +1,20 @@
+<amp-search
+  (search)="filterCourses($event)"
+  (clear)="clearFilter()"
+></amp-search>
 <amp-add-course></amp-add-course>
-<amp-course
-  *ngFor="let course of courses"
-  [course]="course"
-  (delete)="onDeleteCourse($event)"
-></amp-course>
-<button (click)="onLoadMore()">Load more</button>
+
+<ng-container *ngIf="filteredCourses && filteredCourses.length; else noDataMessage">
+  <amp-course
+    *ngFor="let course of filteredCourses | orderBy:'creationDate' "
+    [course]="course"
+    (delete)="onDeleteCourse($event)"
+    [ampDateBorder]="course.creationDate"
+    [class.top]="course.topRated"
+  ></amp-course>
+  <button (click)="onLoadMore()">Load more</button>
+</ng-container>
+
+<ng-template #noDataMessage>
+  <p class="nodata">No data. Feel free to add new course :)</p>
+</ng-template>

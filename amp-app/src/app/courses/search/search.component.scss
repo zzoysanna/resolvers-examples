@@ -1,0 +1,36 @@
+@import "../../../variables";
+
+:host {
+  display: flex;
+  overflow: visible;
+  align-items: center;
+  .search-field {
+    @include input();
+    padding-left: 18px;
+    line-height: 48px;
+    height: 48px;
+    width: 360px;
+  }
+  input {
+    @include inputInvisible();
+    width: calc(100% - 40px);
+  }
+  button {
+    @include green-button();
+    margin-left: 6px;
+    line-height: 46px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 24px;
+    &.clear {
+      background: $gray-color;
+    }
+  }
+  mat-icon {
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+}

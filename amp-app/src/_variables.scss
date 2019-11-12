@@ -6,8 +6,12 @@ $title-color: #2c2f3c;
 $green-color: #9bc837;
 $body-color: #f2f3f7;
 $button-color: #30b6dd;
-$gray-color: #d9dbe3;
+$gray-color: #b9b9b9;
 $shadow: rgba(18, 21, 35, 0.08);
+$top-color: rgba(96, 255, 61, 0.1);
+
+$star-color: #ffd800;
+$star-bg: #15d477;
 
 $header-height: 64px;
 $body-width: 1110px;
@@ -34,7 +38,16 @@ $body-width: 1110px;
   background-color: white;
   border-radius: 3px;
   border: 1px solid $gray-color;
-  padding: 12px;
   font-size: 14px;
   box-sizing: border-box;
+}
+
+@mixin inputInvisible {
+  border: 0;
+  outline: none;
+  line-height: inherit;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+  background: none;
 }

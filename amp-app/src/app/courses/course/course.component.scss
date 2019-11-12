@@ -26,6 +26,18 @@
   .time {
     color: $gray-color;
     font-size: 12px;
+    & > span {
+      padding-right: 8px;
+      display: inline-block;
+      line-height: 18px;
+    }
+    mat-icon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+      margin-right: 2px;
+      vertical-align: middle;
+    }
   }
   .course-buttons {
     flex: 0 0 260px;

@@ -10,8 +10,8 @@ import { LogoComponent } from "./logo/logo.component";
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { LoginComponent } from './login/login.component';
 import { LogoffComponent } from './logoff/logoff.component';
-import { SearchComponent } from './search/search.component';
 import { FormsModule } from "@angular/forms";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,13 +22,13 @@ import { FormsModule } from "@angular/forms";
     BreadcrumbsComponent,
     LoginComponent,
     LogoffComponent,
-    SearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRouting,
     CoursesModule,
     FormsModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
