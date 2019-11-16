@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../shared/course.model';
-import { COURSES } from "../shared/courses-mock";
 import { OrderByPipe } from "../order-by-pipe/order-by.pipe";
+import { CoursesService } from "../services/courses.service";
+import { MatDialog } from "@angular/material";
+import { CourseDeleteDialogComponent } from "../course-delete-dialog/course-delete-dialog.component";
 
 @Component({
   selector: 'amp-courses-list',
@@ -15,11 +17,18 @@ export class CoursesListComponent implements OnInit {
 
   constructor(
     private orderPipe: OrderByPipe,
+    private coursesService: CoursesService,
+    public dialog: MatDialog,
   ) { }
 
   public ngOnInit() {
-    this.courses = COURSES;
-    this.filteredCourses = this.courses;
+    this.coursesService.getCoursesList().subscribe(
+      courses => {
+        this.courses = courses;
+        this.filteredCourses = this.courses;
+      },
+      error => console.error(error),
+    );
   }
 
   public onLoadMore(): void {
@@ -27,7 +36,16 @@ export class CoursesListComponent implements OnInit {
   }
 
   public onDeleteCourse(id: string): void {
-    console.log('delete course ' + id);
+    let dialogRef = this.dialog.open(CourseDeleteDialogComponent, {
+      data: {id},
+    });
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if(result) {
+          this.coursesService.removeItem(id);
+        }
+      }
+    );
   }
 
   public filterCourses(query: string): void {

@@ -1,10 +1,11 @@
 <header>
   <amp-header></amp-header>
 </header>
-<amp-breadcrumbs></amp-breadcrumbs>
+<amp-breadcrumbs *ngIf="isAuthorized"></amp-breadcrumbs>
 
 <main>
-  <router-outlet></router-outlet>
+  <router-outlet *ngIf="isAuthorized"></router-outlet>
+  <amp-login-form *ngIf="!isAuthorized"></amp-login-form>
 </main>
 
 <footer>

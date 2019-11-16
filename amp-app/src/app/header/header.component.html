@@ -1,5 +1,5 @@
 <a href="/"><amp-logo></amp-logo></a>
-<div class="login">
-  <amp-login></amp-login>
-  <amp-logoff></amp-logoff>
+<div class="login" *ngIf="isAuthorized">
+  <amp-login [login]="userName"></amp-login>
+  <amp-logoff (click)="logout()"></amp-logoff>
 </div>
