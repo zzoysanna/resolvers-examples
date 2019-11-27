@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoffComponent } from './logoff/logoff.component';
 import { FormsModule } from "@angular/forms";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     BreadcrumbsComponent,
     LoginComponent,
     LogoffComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,

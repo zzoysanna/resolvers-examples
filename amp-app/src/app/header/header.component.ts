@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: 'amp-header',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public isAuthorized: boolean;
+  public userName: string;
+
+  constructor(
+    private authService: AuthService,
+  ) { }
 
   public ngOnInit() {
+    this.authService.checkLogin();
+    this.authService.isAuthenticated().subscribe(
+      auth => {
+        this.isAuthorized = auth;
+        if(auth) {
+          this.userName = this.authService.getUserInfo();
+        }
+      }
+    );
+  }
+
+  public logout():void {
+    this.authService.logout();
   }
 
 }
