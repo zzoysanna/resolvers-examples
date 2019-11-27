@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteButtonComponent } from './delete-button.component';
+import { MatIconModule } from "@angular/material";
 
 describe('DeleteButtonComponent', () => {
   let component: DeleteButtonComponent;
@@ -8,7 +9,8 @@ describe('DeleteButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteButtonComponent ]
+      declarations: [ DeleteButtonComponent ],
+      imports: [ MatIconModule ]
     })
     .compileComponents();
   }));

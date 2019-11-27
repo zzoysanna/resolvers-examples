@@ -7,11 +7,11 @@ import { CoursesListComponent } from "./courses-list/courses-list.component";
 import { AddCourseComponent } from "./add-course/add-course.component";
 import { DateBorderDirective } from './date-border/date-border.directive';
 import { MatDialogModule, MatIconModule } from "@angular/material";
-import { DurationPipe } from './duration-pipe/duration.pipe';
 import { OrderByPipe } from './order-by-pipe/order-by.pipe';
 import { SearchComponent } from "./search/search.component";
 import { FormsModule } from "@angular/forms";
 import { CourseDeleteDialogComponent } from './course-delete-dialog/course-delete-dialog.component';
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -23,7 +23,6 @@ import { CourseDeleteDialogComponent } from './course-delete-dialog/course-delet
     AddCourseComponent,
     SearchComponent,
     DateBorderDirective,
-    DurationPipe,
     OrderByPipe,
     CourseDeleteDialogComponent,
   ],
@@ -32,6 +31,7 @@ import { CourseDeleteDialogComponent } from './course-delete-dialog/course-delet
     MatIconModule,
     MatDialogModule,
     FormsModule,
+    SharedModule,
   ],
   entryComponents: [
     CourseDeleteDialogComponent,

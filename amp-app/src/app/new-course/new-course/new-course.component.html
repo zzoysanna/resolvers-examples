@@ -1,0 +1,26 @@
+<h1>New course</h1>
+<label>
+  <span>Title</span>
+  <input type="text" [(ngModel)]="title">
+</label>
+<label>
+  <span>Description</span>
+  <textarea [(ngModel)]="description"></textarea>
+</label>
+<label>
+  <span>Duration</span>
+  <input type="text" [(ngModel)]="duration" class="small">
+  {{duration | duration}}
+</label>
+<label>
+  <span>Date</span>
+  <input type="date" [(ngModel)]="date" class="small">
+</label>
+<label>
+  <span>Authors</span>
+  <input type="text" [(ngModel)]="authors">
+</label>
+<footer>
+  <button class="cancel" (click)="cancel()">Cancel</button>
+  <button (click)="save()">Save</button>
+</footer>

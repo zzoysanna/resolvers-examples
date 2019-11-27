@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CourseComponent } from './course.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
+import { SharedModule } from "../../shared/shared.module";
 
 const COURSE = {
   id: '111',
@@ -31,6 +32,9 @@ describe('CourseComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CourseComponent, TestHostComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [
+        SharedModule,
+      ]
     })
     .compileComponents();
   }));

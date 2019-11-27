@@ -1,24 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginFormComponent } from './login-form.component';
+import { NewCourseComponent } from './new-course.component';
 import { FormsModule } from "@angular/forms";
+import { SharedModule } from "../../shared/shared.module";
 
-describe('LoginFormComponent', () => {
-  let component: LoginFormComponent;
-  let fixture: ComponentFixture<LoginFormComponent>;
+describe('NewCourseComponent', () => {
+  let component: NewCourseComponent;
+  let fixture: ComponentFixture<NewCourseComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginFormComponent ],
+      declarations: [ NewCourseComponent ],
       imports: [
-        FormsModule
+        FormsModule,
+        SharedModule,
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginFormComponent);
+    fixture = TestBed.createComponent(NewCourseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

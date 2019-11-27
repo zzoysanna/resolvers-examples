@@ -48,6 +48,10 @@ export class CoursesListComponent implements OnInit {
     );
   }
 
+  public onEditCourse(id: string): void {
+    console.log('edit course ' + id);
+  }
+
   public filterCourses(query: string): void {
     this.filteredCourses = this.orderPipe.transform(this.filteredCourses, 'title', query);
   }

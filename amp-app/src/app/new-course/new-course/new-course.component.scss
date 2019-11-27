@@ -1,14 +1,14 @@
-@import "../../_variables.scss";
+@import "../../../_variables.scss";
 
 :host {
-  width: 368px;
+  width: 731px;
   box-sizing: border-box;
   display: inline-block;
   overflow: visible;
   background: white;
   border-radius: 6px;
   padding: 24px;
-  margin-top: 15vh;
+  margin-top: 2vh;
   box-shadow: 0 1px 24px 0 $shadow;
   h1 {
     font-size: 24px;
@@ -31,17 +31,33 @@
     padding: 6px 12px;
     box-sizing: border-box;
     width: 100%;
+    &.small {
+      width: 150px;
+    }
+  }
+  textarea {
+    @include input();
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    height: 108px;
   }
   button {
     @include green-button();
     font-size: inherit;
     line-height: 36px;
     padding: 0 18px;
+    font-weight: 600;
+    &.cancel {
+      background: $gray-color;
+      margin-right: 12px;
+      color: black;
+    }
   }
   footer {
     margin-top: 18px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
   }
 }

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseDeleteDialogComponent } from './course-delete-dialog.component';
+import { MatIconModule } from "@angular/material";
 
 describe('CourseDeleteDialogComponent', () => {
   let component: CourseDeleteDialogComponent;
@@ -8,7 +9,8 @@ describe('CourseDeleteDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseDeleteDialogComponent ]
+      declarations: [ CourseDeleteDialogComponent ],
+      imports: [ MatIconModule ]
     })
     .compileComponents();
   }));

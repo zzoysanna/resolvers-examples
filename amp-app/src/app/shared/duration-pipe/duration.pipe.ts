@@ -9,8 +9,8 @@ export class DurationPipe implements PipeTransform {
     let result;
     const minutes = value % 60;
     const hours = (value - minutes) / 60;
-    result = hours > 0 ? `${hours} h ` : '';
-    result += minutes > 0 ? `${minutes} min` : '';
+    result = hours > 0 ? `${hours}h ` : '';
+    result += minutes > 0 ? `${minutes}min` : '';
     return result;
   }
 
