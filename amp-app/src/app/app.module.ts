@@ -13,6 +13,7 @@ import { LogoffComponent } from './logoff/logoff.component';
 import { FormsModule } from "@angular/forms";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginFormComponent } from './login-form/login-form.component';
+import {NewCourseModule} from "./new-course/new-course.module";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
     CoursesModule,
     FormsModule,
     NoopAnimationsModule,
+    NewCourseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

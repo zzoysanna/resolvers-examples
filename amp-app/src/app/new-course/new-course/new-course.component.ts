@@ -14,7 +14,7 @@ export class NewCourseComponent implements OnInit {
   public description: string;
 
   @Input()
-  public duration: string;
+  public duration: number;
 
   @Input()
   public date: string;
