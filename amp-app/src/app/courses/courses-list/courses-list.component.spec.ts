@@ -4,6 +4,8 @@ import { CoursesListComponent } from './courses-list.component';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 import { OrderByPipe } from "../order-by-pipe/order-by.pipe";
+import { MatDialog } from "@angular/material";
+import { Overlay } from "@angular/cdk/overlay";
 
 const COURSE = {
   id: '111',
@@ -23,6 +25,7 @@ describe('CoursesListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CoursesListComponent, OrderByPipe ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      providers: [ MatDialog, Overlay ],
     })
     .compileComponents();
   }));

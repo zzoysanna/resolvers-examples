@@ -2,11 +2,11 @@
   <header>
     <h3>{{course.title | uppercase}}</h3>
     <div class="time">
-      <span>
+      <span *ngIf="course.duration">
         <mat-icon>timer</mat-icon>
         {{course.duration | duration}}
       </span>
-      <span>
+      <span *ngIf="course.creationDate">
         <mat-icon>date_range</mat-icon>
         {{course.creationDate | date}}
       </span>

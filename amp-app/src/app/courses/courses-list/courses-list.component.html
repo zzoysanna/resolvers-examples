@@ -2,7 +2,7 @@
   (search)="filterCourses($event)"
   (clear)="clearFilter()"
 ></amp-search>
-<amp-add-course></amp-add-course>
+<amp-add-course (click)="goToNew()"></amp-add-course>
 
 <ng-container *ngIf="filteredCourses && filteredCourses.length; else noDataMessage">
   <amp-course

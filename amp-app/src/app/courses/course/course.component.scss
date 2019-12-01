@@ -2,6 +2,7 @@
 
 :host {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   overflow: visible;
   background: white;
@@ -45,6 +46,14 @@
   }
   amp-edit-button {
     margin-right: 12px;
+  }
+  .course-content {
+    display: flex;
+    flex-grow: 1;
+    flex-flow: column;
+    header {
+      flex-grow: 1;
+    }
   }
 
 }

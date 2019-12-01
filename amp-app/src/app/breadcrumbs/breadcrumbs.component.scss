@@ -3,11 +3,19 @@
 :host {
   display: block;
   background: white;
-  div {
+  .inner {
+    max-width: $body-width;
+    width: 100%;
+    margin: 0 auto;
+    color: $button-color;
+  }
+  a, span {
     max-width: $body-width;
     height: $header-height;
     margin: 0 auto;
     line-height: $header-height;
     font-weight: 600;
+    text-decoration: none;
+    color: black;
   }
 }

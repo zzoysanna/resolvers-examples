@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class AuthService {
   private userKey = 'user';
   private tokenKey = 'user-token';
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   public checkLogin(): void {
     const user = localStorage.getItem(this.userKey);
@@ -23,7 +26,7 @@ export class AuthService {
     localStorage.setItem(this.userKey, btoa(email));
     localStorage.setItem(this.tokenKey, btoa((new Date()).toString()));
     this.isAuthorized.next(true);
-    console.log('logged in successfully');
+    this.router.navigateByUrl('courses');
   }
 
   public logout(): void {
@@ -31,6 +34,7 @@ export class AuthService {
       localStorage.removeItem(this.userKey);
       localStorage.removeItem(this.tokenKey);
       this.isAuthorized.next(false);
+      this.router.navigateByUrl('login');
     }
   }
 

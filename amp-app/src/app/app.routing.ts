@@ -2,19 +2,38 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoursesListComponent } from "./courses/courses-list/courses-list.component";
 import { NewCourseComponent } from "./new-course/new-course/new-course.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { LoginFormComponent } from "./login-form/login-form.component";
+import { AuthGuard } from "./services/auth.guard";
 
 const routes: Routes = [
   {
-    path: 'courses',
-    component: CoursesListComponent,
+    path: 'login',
+    component: LoginFormComponent,
   },
   {
-    path: 'new',
+    path: 'courses',
+    component: CoursesListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'courses/new',
     component: NewCourseComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'course/:id',
+    component: NewCourseComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '',
+    redirectTo: '/courses',
+    pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'courses',
+    component: NotFoundComponent,
   }
 ];
 

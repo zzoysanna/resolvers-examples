@@ -13,7 +13,8 @@ import { LogoffComponent } from './logoff/logoff.component';
 import { FormsModule } from "@angular/forms";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginFormComponent } from './login-form/login-form.component';
-import {NewCourseModule} from "./new-course/new-course.module";
+import { NewCourseModule } from "./new-course/new-course.module";
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {NewCourseModule} from "./new-course/new-course.module";
     LoginComponent,
     LogoffComponent,
     LoginFormComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

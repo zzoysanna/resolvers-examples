@@ -1,1 +1,4 @@
-<div>Courses</div>
+<div class="inner">
+  <a routerLink="courses">Courses</a>
+  <ng-container *ngIf="isNew || !!courseTitle"> / <span>{{isNew ? 'New Course' : courseTitle}}</span></ng-container>
+</div>

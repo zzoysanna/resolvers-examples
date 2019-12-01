@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from "../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'amp-root',
@@ -13,14 +14,20 @@ export class AppComponent {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
   ) {
   }
 
   public ngOnInit() {
     this.authService.checkLogin();
     this.authService.isAuthenticated().subscribe(
-      auth => this.isAuthorized = auth,
-      error => console.error(error),
+      auth => {
+          this.isAuthorized = auth;
+          if(!this.isAuthorized){
+            this.router.navigateByUrl('login');
+          }
+        },
+        error => console.error(error),
     )
   }
 
