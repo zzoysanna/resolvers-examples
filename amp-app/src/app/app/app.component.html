@@ -4,8 +4,7 @@
 <amp-breadcrumbs *ngIf="isAuthorized"></amp-breadcrumbs>
 
 <main>
-  <router-outlet *ngIf="isAuthorized"></router-outlet>
-  <amp-login-form *ngIf="!isAuthorized"></amp-login-form>
+  <router-outlet></router-outlet>
 </main>
 
 <footer>

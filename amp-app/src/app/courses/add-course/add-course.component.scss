@@ -7,7 +7,7 @@
   i {
     font-style: normal;
     font-size: 25px;
-    line-height: 100%;
+    line-height: 31px;
     margin-right: 8px;
   }
   button {
@@ -15,5 +15,7 @@
     line-height: 36px;
     font-size: 14px;
     padding: 0 24px;
+    text-decoration: none;
+    display: flex;
   }
 }

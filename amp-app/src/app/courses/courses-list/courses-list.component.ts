@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from '../shared/course.model';
 import { OrderByPipe } from "../order-by-pipe/order-by.pipe";
-import { CoursesService } from "../services/courses.service";
 import { MatDialog } from "@angular/material";
 import { CourseDeleteDialogComponent } from "../course-delete-dialog/course-delete-dialog.component";
+import { Router } from "@angular/router";
+import { CoursesService } from "../../services/courses.service";
+import { Course } from "../../models/course.model";
 
 @Component({
   selector: 'amp-courses-list',
@@ -19,6 +20,7 @@ export class CoursesListComponent implements OnInit {
     private orderPipe: OrderByPipe,
     private coursesService: CoursesService,
     public dialog: MatDialog,
+    private router: Router,
   ) { }
 
   public ngOnInit() {
@@ -48,12 +50,20 @@ export class CoursesListComponent implements OnInit {
     );
   }
 
+  public onEditCourse(id: string): void {
+    this.router.navigateByUrl(`course/${id}`);
+  }
+
   public filterCourses(query: string): void {
     this.filteredCourses = this.orderPipe.transform(this.filteredCourses, 'title', query);
   }
 
   public clearFilter(): void {
     this.filteredCourses = this.courses;
+  }
+
+  public goToNew(): void {
+    this.router.navigateByUrl('courses/new');
   }
 
 }

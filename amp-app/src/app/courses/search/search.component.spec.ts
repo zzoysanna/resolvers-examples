@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchComponent } from './search.component';
 import { FormsModule } from "@angular/forms";
-import {By} from '@angular/platform-browser';
+import { By } from '@angular/platform-browser';
+import { MatIconModule } from "@angular/material";
 
 const VALUE = 'test';
 
@@ -15,6 +16,7 @@ describe('SearchComponent', () => {
       declarations: [ SearchComponent ],
       imports: [
         FormsModule,
+        MatIconModule,
       ]
     })
     .compileComponents();
