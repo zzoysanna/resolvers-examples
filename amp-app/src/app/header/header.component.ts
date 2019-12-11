@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../services/auth.service";
+import { filter, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'amp-header',
@@ -16,12 +17,15 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.authService.checkLogin();
-    this.authService.isAuthenticated().subscribe(
-      auth => {
-        this.isAuthorized = auth;
-        if(auth) {
-          this.userName = this.authService.getUserInfo();
+    this.authService.isAuthenticated().pipe(
+      tap(auth => this.isAuthorized = auth),
+      filter(auth => !!auth),
+      switchMap(() => this.authService.getCurrentUser()),
+    ).subscribe(
+      user => {
+        if(user) {
+          const {first, last} = user.name;
+          this.userName = first + ' ' + last;
         }
       }
     );

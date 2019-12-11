@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  rest: 'http://localhost:3004',
+  tokenKey: 'amp-user-token',
 };
 
 /*

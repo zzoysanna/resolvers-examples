@@ -11,12 +11,19 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
+      @media screen and (max-width: $body-width){
+        width: calc(100% - 3rem);
+      }
     }
   }
   main {
     display: block;
     max-width: $body-width;
+    width: $body-width;
     margin: 0 auto;
     flex: 1;
+    @media screen and (max-width: $body-width){
+      width: calc(100% - 3rem);
+    }
   }
 }

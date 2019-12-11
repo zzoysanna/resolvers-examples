@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Course } from "../models/course.model";
-import { COURSES } from "../models/courses-mock";
-import {BehaviorSubject, Observable, of} from "rxjs";
+import { BehaviorSubject, Observable, Subscription } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -9,33 +11,61 @@ import {BehaviorSubject, Observable, of} from "rxjs";
 export class CoursesService {
   private coursesStream = new BehaviorSubject<Course[]>(null);
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
   get courses(): Course[] {
     return this.coursesStream.getValue();
   }
 
-  public getCoursesList(): Observable<Course[]> {
+  public getCourses(): Observable<Course[]> {
     if(!this.coursesStream.getValue()) {
-      this.coursesStream.next(COURSES);
+      return this.getCoursesPartial();
     }
     return this.coursesStream;
   }
 
-  public createCourse(course: Course): void {
-    course.id = this.createNewId();
-    this.courses.push(course);
-    this.coursesStream.next(this.courses);
+  public getCoursesPartial(count: number = 5): Observable<Course[]> {
+    const currentCourses = this.coursesStream.getValue();
+    const start = currentCourses ? currentCourses.length : 0;
+    this.http.get<Course[]>(`${environment.rest}/courses?start=${start}&count=${count}`).subscribe(
+      courses => {
+        if(currentCourses) {
+          currentCourses.push(...courses);
+          this.coursesStream.next(currentCourses);
+        } else {
+          this.coursesStream.next(courses);
+        }
+      }
+    );
+    return this.coursesStream;
   }
 
-  private createNewId(): string {
-    const maxId = Math.max.apply(Math, this.courses.map(course => course.id));
-    return (Number(maxId) + 1).toString();
+  public getCoursesAll(): Observable<Course[]> {
+    return this.http.get<Course[]>(`${environment.rest}/courses`);
+  }
+
+  public search(query: string): Observable<Course[]> {
+    this.http.get<Course[]>(`${environment.rest}/courses?textFragment=${query}`).subscribe(
+      courses => {
+        this.coursesStream.next(courses);
+      }
+    );
+    return this.coursesStream;
+  }
+
+  public createCourse(course: Course): void {
+    this.http.post<Course>(`${environment.rest}/courses`, course).pipe(
+      tap(() => this.coursesStream.next(null)),
+    ).subscribe(
+      () => this.getCourses(),
+      error => console.error(error),
+    );
   }
 
   public getCourseById(id: string): Observable<Course> {
-    const course = this.courses.find(course => course.id === id);
-    return of(course);
+    return this.http.get<Course>(`${environment.rest}/courses/${id}`);
   }
 
   public updateCourse(newCourse: Course): void {
@@ -47,7 +77,12 @@ export class CoursesService {
     this.coursesStream.next(this.courses);
   }
 
-  public removeItem(id: string): void {
-    this.coursesStream.next(this.courses.filter(course => course.id !== id));
+  public removeItem(id: string): Subscription {
+    return this.http.delete(`${environment.rest}/courses/${id}`).pipe(
+      tap(() => this.coursesStream.next(null)),
+    ).subscribe(
+      () => this.getCourses(),
+      error => console.error(error),
+    );
   }
 }

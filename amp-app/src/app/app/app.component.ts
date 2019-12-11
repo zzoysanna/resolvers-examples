@@ -23,9 +23,7 @@ export class AppComponent {
     this.authService.isAuthenticated().subscribe(
       auth => {
           this.isAuthorized = auth;
-          if(!this.isAuthorized){
-            this.router.navigateByUrl('login');
-          }
+          this.router.navigateByUrl(this.isAuthorized ? 'courses' : 'login')
         },
         error => console.error(error),
     )
