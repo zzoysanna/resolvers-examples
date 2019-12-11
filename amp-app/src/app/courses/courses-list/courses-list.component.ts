@@ -66,7 +66,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   public clearFilter(): void {
-    this.filteredCourses = this.courses;
+    this.coursesService.onClearSearch();
   }
 
   public goToNew(): void {

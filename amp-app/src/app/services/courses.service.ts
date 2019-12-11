@@ -85,4 +85,9 @@ export class CoursesService {
       error => console.error(error),
     );
   }
+
+  public onClearSearch(): void {
+    this.coursesStream.next(null);
+    this.getCourses();
+  }
 }

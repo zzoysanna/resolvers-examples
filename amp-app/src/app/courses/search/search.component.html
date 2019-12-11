@@ -1,6 +1,6 @@
 <div class="search-field">
   <mat-icon>search</mat-icon>
-  <input type="text" placeholder="Text to search" [(ngModel)]="query">
+  <input type="text" placeholder="Text to search" [(ngModel)]="query" #searchField>
 </div>
-<button (click)="onBtnClick()">Search</button>
+<button (click)="onBtnClick()" *ngIf="false">Search</button>
 <button class="clear" (click)="onClear()">Clear</button>

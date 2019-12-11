@@ -11,12 +11,14 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { LoginComponent } from './login/login.component';
 import { LogoffComponent } from './logoff/logoff.component';
 import { FormsModule } from "@angular/forms";
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NewCourseModule } from "./new-course/new-course.module";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
+import { LoaderComponent } from './loader/loader.component';
+import { MatProgressSpinnerModule } from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -29,15 +31,17 @@ import { TokenInterceptor } from "./interceptors/token.interceptor";
     LogoffComponent,
     LoginFormComponent,
     NotFoundComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRouting,
     CoursesModule,
     FormsModule,
-    NoopAnimationsModule,
     NewCourseModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {

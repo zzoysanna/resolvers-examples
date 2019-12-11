@@ -1,11 +1,22 @@
-import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit
+} from '@angular/core';
+import { fromEvent } from "rxjs";
+import { debounceTime, filter } from "rxjs/operators";
 
 @Component({
   selector: 'amp-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, AfterViewInit {
 
   @Input()
   public query: string;
@@ -15,6 +26,9 @@ export class SearchComponent implements OnInit {
 
   @Output()
   public clear = new EventEmitter<boolean>();
+
+  @ViewChild('searchField', {static: false})
+  public searchField: ElementRef;
 
   constructor() { }
 
@@ -30,6 +44,16 @@ export class SearchComponent implements OnInit {
   public onClear(): void {
     this.query = '';
     this.clear.emit(true);
+  }
+
+  public ngAfterViewInit(): void {
+    fromEvent(this.searchField.nativeElement, 'keyup').pipe(
+      debounceTime(500),
+      filter(() => this.query.length >= 3),
+    ).subscribe(
+      () => this.search.emit(this.query),
+      error => console.error(error),
+    )
   }
 
 
