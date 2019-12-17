@@ -13,6 +13,7 @@
 
 # dependencies
 /amp-app/node_modules
+/amp-app/json-server/node_modules
 
 # profiling files
 chrome-profiler-events.json

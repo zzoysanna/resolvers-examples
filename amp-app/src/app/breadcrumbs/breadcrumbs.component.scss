@@ -8,6 +8,9 @@
     width: 100%;
     margin: 0 auto;
     color: $button-color;
+    @media screen and (max-width: $body-width){
+      width: calc(100% - 3rem);
+    }
   }
   a, span {
     max-width: $body-width;

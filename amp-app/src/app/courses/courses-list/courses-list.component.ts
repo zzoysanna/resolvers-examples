@@ -5,6 +5,7 @@ import { CourseDeleteDialogComponent } from "../course-delete-dialog/course-dele
 import { Router } from "@angular/router";
 import { CoursesService } from "../../services/courses.service";
 import { Course } from "../../models/course.model";
+import { filter } from "rxjs/operators";
 
 @Component({
   selector: 'amp-courses-list',
@@ -24,7 +25,9 @@ export class CoursesListComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.coursesService.getCoursesList().subscribe(
+    this.coursesService.getCourses().pipe(
+      filter(courses => !!courses),
+    ).subscribe(
       courses => {
         this.courses = courses;
         this.filteredCourses = this.courses;
@@ -34,7 +37,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   public onLoadMore(): void {
-    console.log('load more');
+    this.coursesService.getCoursesPartial();
   }
 
   public onDeleteCourse(id: string): void {
@@ -58,8 +61,12 @@ export class CoursesListComponent implements OnInit {
     this.filteredCourses = this.orderPipe.transform(this.filteredCourses, 'title', query);
   }
 
+  public searchCourses(query: string): void {
+    this.coursesService.search(query);
+  }
+
   public clearFilter(): void {
-    this.filteredCourses = this.courses;
+    this.coursesService.onClearSearch();
   }
 
   public goToNew(): void {

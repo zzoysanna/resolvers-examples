@@ -3,11 +3,18 @@ import { IUser } from "./user";
 export class User implements IUser {
   constructor(
     public id: string,
-    public firstName: string,
-    public lastName: string,
+    public fakeToken: string,
+    public login: string,
+    public password: string,
+    public name: {
+      first: string,
+      last: string,
+    },
   ) {
     this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.fakeToken = fakeToken;
+    this.login = login;
+    this.password = password;
+    this.name = name;
   }
 }

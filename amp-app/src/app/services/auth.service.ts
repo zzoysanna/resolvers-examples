@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from "rxjs";
 import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { User } from "../models/user.model";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -8,43 +12,67 @@ import { Router } from "@angular/router";
 export class AuthService {
 
   private isAuthorized = new BehaviorSubject<boolean>(null);
-  private userKey = 'user';
-  private tokenKey = 'user-token';
+  private userStream = new BehaviorSubject<User>(null);
 
   constructor(
     private router: Router,
+    private http: HttpClient,
   ) { }
 
   public checkLogin(): void {
-    const user = localStorage.getItem(this.userKey);
-    const token = localStorage.getItem(this.tokenKey);
-
-    this.isAuthorized.next(!!user && !!token)
+    const token = localStorage.getItem(environment.tokenKey);
+    if(token) {
+      this.getUserByToken(token).subscribe(
+        user => {
+          this.isAuthorized.next(true);
+          this.userStream.next(user);
+        }
+      );
+    }
   }
 
-  public login(email: string, password: string): void {
-    localStorage.setItem(this.userKey, btoa(email));
-    localStorage.setItem(this.tokenKey, btoa((new Date()).toString()));
-    this.isAuthorized.next(true);
-    this.router.navigateByUrl('courses');
+  public login(login: string, password: string): void {
+    this.getUser(login).subscribe(
+      user => {
+        if(user.password === password) {
+          this.userStream.next(user);
+          localStorage.setItem(environment.tokenKey, user.fakeToken);
+          this.isAuthorized.next(true);
+          this.router.navigateByUrl('courses');
+        } else {
+          console.error('wrong password');
+        }
+      },
+      error => console.error(error),
+    );
+  }
+
+  private getUser(login: string): Observable<User> {
+    return this.http.get<User>(`${environment.rest}/users?login=${login}`).pipe(
+      map(users => users[0]),
+    );
+  }
+
+  private getUserByToken(token: string): Observable<User> {
+    return this.http.get<User>(`${environment.rest}/users?fakeToken=${token}`).pipe(
+      map(users => users[0]),
+    );
   }
 
   public logout(): void {
-    if(this.isAuthorized) {
-      localStorage.removeItem(this.userKey);
-      localStorage.removeItem(this.tokenKey);
+    if(this.isAuthorized.getValue()) {
+      localStorage.removeItem(environment.tokenKey);
       this.isAuthorized.next(false);
+      this.userStream.next(null);
       this.router.navigateByUrl('login');
     }
   }
 
   public isAuthenticated(): Observable<boolean> {
-    return this.isAuthorized;
+    return this.isAuthorized.asObservable();
   }
 
-  public getUserInfo(): string {
-    if(this.isAuthorized) {
-      return atob(localStorage.getItem(this.userKey));
-    }
+  public getCurrentUser(): Observable<User> {
+    return this.userStream.asObservable();
   }
 }

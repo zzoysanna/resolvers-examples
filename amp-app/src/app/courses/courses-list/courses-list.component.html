@@ -1,10 +1,11 @@
 <amp-search
-  (search)="filterCourses($event)"
+  (search)="searchCourses($event)"
   (clear)="clearFilter()"
 ></amp-search>
 <amp-add-course (click)="goToNew()"></amp-add-course>
 
 <ng-container *ngIf="filteredCourses && filteredCourses.length; else noDataMessage">
+  <p>{{filteredCourses.length}} courses</p>
   <amp-course
     *ngFor="let course of filteredCourses | orderBy:'creationDate' "
     [course]="course"
