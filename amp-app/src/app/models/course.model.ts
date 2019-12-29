@@ -1,4 +1,5 @@
 import { ICourse } from "./course";
+import { Author } from "./author.model";
 
 export class Course implements ICourse {
   constructor(
@@ -8,6 +9,7 @@ export class Course implements ICourse {
     public duration: number,
     public description: string,
     public topRated: boolean,
+    public authors: Author[],
   ) {
     this.id = id;
     this.title = title;
@@ -15,5 +17,6 @@ export class Course implements ICourse {
     this.duration = duration;
     this.description = description;
     this.topRated = topRated;
+    this.authors = authors;
   }
 }

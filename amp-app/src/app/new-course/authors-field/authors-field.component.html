@@ -1,0 +1,12 @@
+<div class=field>
+    <div *ngFor="let author of value" class="author">
+        <span>{{author.name}}</span>
+        <mat-icon (click)="removeAuthor(author.id)">close</mat-icon>
+    </div>
+    <input type="text" class="author-input" #inputField [(ngModel)]="query" placeholder="Enter author name">
+</div>
+
+<div class="autocomplete" *ngIf="authorsList?.length">
+    <span *ngFor="let author of authorsList" (click)="addAuthor(author)">{{author.name}}</span>
+</div>
+
