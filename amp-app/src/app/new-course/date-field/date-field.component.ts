@@ -20,11 +20,9 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor {
   public maskDate = [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
 
   constructor(
-    // private datePipe: DatePipe,
   ) { }
 
   public ngOnInit() {
-    // this.value = this.datePipe.transform(this.value);
   }
 
   private onChange: any = () => {};

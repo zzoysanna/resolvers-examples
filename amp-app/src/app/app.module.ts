@@ -10,7 +10,7 @@ import { LogoComponent } from "./logo/logo.component";
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { LoginComponent } from './login/login.component';
 import { LogoffComponent } from './logoff/logoff.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NewCourseModule } from "./new-course/new-course.module";
@@ -19,6 +19,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
 import { LoaderComponent } from './loader/loader.component';
 import { MatProgressSpinnerModule } from "@angular/material";
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,8 @@ import { MatProgressSpinnerModule } from "@angular/material";
     HttpClientModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [
     {

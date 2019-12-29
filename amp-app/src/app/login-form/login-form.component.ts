@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from "../services/auth.service";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'amp-login-form',
@@ -8,23 +9,27 @@ import { AuthService } from "../services/auth.service";
 })
 export class LoginFormComponent implements OnInit {
 
-  @Input()
-  public email: string;
-
-  @Input()
-  public password: string;
+  public loginForm: FormGroup;
 
   constructor(
     private authService: AuthService,
+    private fb: FormBuilder,
   ) { }
 
   public ngOnInit() {
+    this.loginForm = this.fb.group({
+      'email': ['', Validators.required],
+      'password': ['', Validators.required]
+    });
   }
 
   public login(): void {
-    if(this.email && this.password) {
-      this.authService.login(this.email, this.password);
-    }
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
+  }
+
+  public isControlInvalid(controlName: string): boolean {
+    const control = this.loginForm.controls[controlName];
+    return control.invalid && control.touched;
   }
 
 }
