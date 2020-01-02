@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { LoaderService } from "../services/loader.service";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'amp-root',
@@ -23,7 +24,9 @@ export class AppComponent implements OnDestroy, AfterContentChecked{
     private router: Router,
     private loaderService: LoaderService,
     private cdr: ChangeDetectorRef,
+    private translate: TranslateService,
   ) {
+    this.translate.setDefaultLang('ru-RU');
   }
 
   public ngOnInit() {

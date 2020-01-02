@@ -3,7 +3,12 @@
         <span>{{author.name}}</span>
         <mat-icon (click)="removeAuthor(author.id)">close</mat-icon>
     </div>
-    <input type="text" class="author-input" #inputField [(ngModel)]="query" placeholder="Enter author name">
+    <input type="text" 
+    class="author-input" 
+    #inputField 
+    [(ngModel)]="query" 
+    placeholder="{{'Enter author name' | translate}}"
+    >
 </div>
 
 <div class="autocomplete" *ngIf="authorsList?.length">

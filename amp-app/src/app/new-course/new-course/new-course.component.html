@@ -1,8 +1,8 @@
-<h1>New course</h1>
+<h1>{{'New course' | translate}}</h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <label>
-    <span>Title</span>
+    <span>{{'Title' | translate}}</span>
     <input 
       type="text" 
       formControlName="title" 
@@ -12,7 +12,7 @@
   </label>
 
   <label>
-    <span>Description</span>
+    <span>{{'Description' | translate}}</span>
     <textarea 
       formControlName="description" 
       [class.invalid]="isControlInvalid('description')">
@@ -21,7 +21,7 @@
   </label>
 
   <label>
-    <span>Duration</span>
+    <span>{{'Duration' | translate}}</span>
     <amp-time-field 
       formControlName="duration"
       [class.invalid]="isControlInvalid('duration')"
@@ -32,7 +32,7 @@
   </label>
 
   <label>
-    <span>Date</span>
+    <span>{{'Date' |translate}}</span>
     <amp-date-field 
       formControlName="date" 
       [class.invalid]="isControlInvalid('date')">
@@ -41,7 +41,7 @@
   </label>
 
   <label>
-    <span>Authors</span>
+    <span>{{'Authors' | translate}}</span>
     <amp-authors-field 
       formControlName="authors"
       [class.invalid]="isControlInvalid('authors')">
@@ -50,7 +50,7 @@
   </label>
 
   <footer>
-    <button class="cancel" (click)="cancel()">Cancel</button>
-    <button type="submit" [disabled]="form.invalid">Save</button>
+    <button class="cancel" (click)="cancel()">{{'Cancel' | translate}}</button>
+    <button type="submit" [disabled]="form.invalid">{{'Save' | translate}}</button>
   </footer>
 </form>

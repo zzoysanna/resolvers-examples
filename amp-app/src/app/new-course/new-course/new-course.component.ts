@@ -97,13 +97,6 @@ export class NewCourseComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    // if(this.form.value.date){
-    //   const date = this.prepareDate(this.form.value.date);
-    //   console.log(date);
-    // }
-    
-    console.log(this.form);
-    console.log(this.form.value);
     this.sendData();
     this.router.navigateByUrl('courses');
 
