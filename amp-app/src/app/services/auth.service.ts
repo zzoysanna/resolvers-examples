@@ -13,6 +13,7 @@ export class AuthService {
 
   private isAuthorized = new BehaviorSubject<boolean>(null);
   private userStream = new BehaviorSubject<User>(null);
+  public isAuthFailed = new BehaviorSubject<boolean>(null);
 
   constructor(
     private router: Router,
@@ -34,13 +35,13 @@ export class AuthService {
   public login(login: string, password: string): void {
     this.getUser(login).subscribe(
       user => {
-        if(user.password === password) {
+        if(user && user.password === password) {
           this.userStream.next(user);
           localStorage.setItem(environment.tokenKey, user.fakeToken);
           this.isAuthorized.next(true);
           this.router.navigateByUrl('courses');
         } else {
-          console.error('wrong password');
+          this.isAuthFailed.next(true);
         }
       },
       error => console.error(error),

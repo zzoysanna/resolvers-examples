@@ -44,7 +44,7 @@ export class NewCourseComponent implements OnInit {
         this.title = title;
         this.description = description;
         this.duration = duration;
-        this.date = this.datePipe.transform(creationDate, 'dd/MM/yyyy')
+        this.date = this.datePipe.transform(creationDate, 'dd/MM/yyyy');
         this.authors = authors;
 
         this.createForm();
@@ -74,9 +74,6 @@ export class NewCourseComponent implements OnInit {
       authors: this.form.value.authors,
     };
 
-    console.log(course);
-    
-
     if(course.id) {
       this.courseService.updateCourse(course);
     } else {
@@ -97,16 +94,8 @@ export class NewCourseComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    // if(this.form.value.date){
-    //   const date = this.prepareDate(this.form.value.date);
-    //   console.log(date);
-    // }
-    
-    console.log(this.form);
-    console.log(this.form.value);
     this.sendData();
     this.router.navigateByUrl('courses');
-
   }
 
   public isControlInvalid(controlName: string): boolean {

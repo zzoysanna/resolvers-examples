@@ -25,6 +25,7 @@ export class AuthorsFieldComponent implements OnInit, ControlValueAccessor, Afte
 
   public query: string;
   public authorsList: Author[];
+  public maxStringLength = 2;
 
   constructor(
     private authorsService: AuthorsService,
@@ -37,14 +38,13 @@ export class AuthorsFieldComponent implements OnInit, ControlValueAccessor, Afte
     fromEvent(this.inputField.nativeElement, 'keyup').pipe(
       debounceTime(500),
       tap(() => {
-        if(this.query.length < 3) {
+        if(this.query.length < this.maxStringLength) {
           this.authorsList = [];
         }
       }),
-      filter(() => this.query.length >= 3),
+      filter(() => this.query.length >= this.maxStringLength),
       switchMap(() => this.authorsService.search(this.query)),
       filter(authors => !!authors),
-      map(authors => authors.slice(0, 6)),
     ).subscribe(
       authors => {
         this.authorsList = authors;
