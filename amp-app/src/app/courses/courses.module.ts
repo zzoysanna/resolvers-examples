@@ -9,7 +9,7 @@ import { DateBorderDirective } from './date-border/date-border.directive';
 import { MatDialogModule, MatIconModule } from "@angular/material";
 import { OrderByPipe } from './order-by-pipe/order-by.pipe';
 import { SearchComponent } from "./search/search.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CourseDeleteDialogComponent } from './course-delete-dialog/course-delete-dialog.component';
 import { SharedModule } from "../shared/shared.module";
 
@@ -32,6 +32,7 @@ import { SharedModule } from "../shared/shared.module";
     MatDialogModule,
     FormsModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
   entryComponents: [
     CourseDeleteDialogComponent,

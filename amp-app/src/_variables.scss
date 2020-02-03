@@ -13,6 +13,9 @@ $top-color: rgba(96, 255, 61, 0.1);
 $star-color: #ffd800;
 $star-bg: #15d477;
 
+$error-bg: rgba(255,186,186,0.2);
+$error: #b70c0c;
+
 $header-height: 64px;
 $body-width: 1110px;
 
@@ -25,6 +28,10 @@ $body-width: 1110px;
   outline: none;
   line-height: 22px;
   padding: 0 11px;
+  &[disabled] {
+    background: $gray-color;
+    opacity: 0.8;
+  }
 }
 
 @mixin green-button {
@@ -40,6 +47,10 @@ $body-width: 1110px;
   border: 1px solid $gray-color;
   font-size: 14px;
   box-sizing: border-box;
+  &.invalid {
+    background: $error-bg;
+    border-color: $error;
+  }
 }
 
 @mixin inputInvisible {

@@ -1,0 +1,21 @@
+@import "../../../_variables.scss";
+
+:host {
+    input {
+        @include input();
+        height: 36px;
+        padding: 6px 12px;
+        box-sizing: border-box;
+        width: 100%;
+        &.small {
+            width: 170px;
+        }
+    }
+    span {
+        padding: 0 16px;
+    }
+    &.invalid input{
+        background: $error-bg;
+        border-color: $error;
+    }
+}

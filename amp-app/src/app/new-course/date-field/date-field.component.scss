@@ -1,0 +1,21 @@
+@import "../../../_variables.scss";
+
+:host {
+    @include input();
+    height: 36px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    width: 170px;
+    input {
+        @include inputInvisible();
+        height: 32px;
+        padding: 6px 12px;
+        box-sizing: border-box;
+        width: 136px;
+    }
+    mat-icon {
+        line-height: 36px;
+        opacity: 0.5;
+    }
+}
