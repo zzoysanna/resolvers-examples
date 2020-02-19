@@ -5,7 +5,7 @@
 <amp-add-course (click)="goToNew()"></amp-add-course>
 
 <ng-container *ngIf="filteredCourses && filteredCourses.length; else noDataMessage">
-  <p>{{filteredCourses.length}} courses</p>
+  <p>{{filteredCourses.length}} {{'courses' | translate}}</p>
   <amp-course
     *ngFor="let course of filteredCourses | orderBy:'creationDate' "
     [course]="course"
@@ -14,9 +14,9 @@
     [ampDateBorder]="course.creationDate"
     [class.top]="course.topRated"
   ></amp-course>
-  <button (click)="onLoadMore()">Load more</button>
+  <button (click)="onLoadMore()">{{'Load more' | translate}}</button>
 </ng-container>
 
 <ng-template #noDataMessage>
-  <p class="nodata">No data. Feel free to add new course :)</p>
+  <p class="nodata">{{'No data, feel free to add new course :)' | translate}}</p>
 </ng-template>

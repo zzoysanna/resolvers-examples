@@ -1,6 +1,6 @@
 <div class="search-field">
   <mat-icon>search</mat-icon>
-  <input type="text" placeholder="Text to search" [(ngModel)]="query" #searchField>
+  <input type="text" placeholder="{{'Text to search' | translate}}" [(ngModel)]="query" #searchField>
 </div>
-<button (click)="onBtnClick()" *ngIf="false">Search</button>
-<button class="clear" (click)="onClear()">Clear</button>
+<button (click)="onBtnClick()" *ngIf="false">{{'Search' | translate}}</button>
+<button class="clear" (click)="onClear()">{{'Clear' | translate}}</button>

@@ -24,7 +24,6 @@ export class TokenInterceptor implements HttpInterceptor {
         params: req.params.set('token', token),
       });
       return next.handle(newReq).pipe(
-        delay(1000),
         finalize(() => this.loaderService.stop()),
       );
     }
