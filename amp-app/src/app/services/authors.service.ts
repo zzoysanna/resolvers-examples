@@ -3,6 +3,7 @@ import { Author } from '../models/author.model';
 import { BehaviorSubject, Observable, Subscription } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,9 @@ export class AuthorsService {
   ) { }
 
   public search(query: string): Observable<Author[]> {
-    this.http.get<Author[]>(`${environment.rest}/authors?textFragment=${query}`).subscribe(
+    this.http.get<Author[]>(`${environment.rest}/authors`).pipe(
+      map(authors => authors.filter(author => this.checkAuthorName(author.name, query))),
+    ).subscribe(
       authors => {
         this.authorsStream.next(authors);
       }
@@ -31,5 +34,10 @@ export class AuthorsService {
       }
     );
     return this.authorsStream;
+  }
+
+  public checkAuthorName(author: string, query: string): boolean {
+    const [name, surname] = author.toLowerCase().split(' ');
+    return name.startsWith(query) || surname.startsWith(query);
   }
 }

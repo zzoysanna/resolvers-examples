@@ -1,5 +1,8 @@
-<h1>{{'Login title' | translate}}</h1>
-<form [formGroup]="loginForm">
+<h1>
+  {{'Login title' | translate}}
+  <span class="error" *ngIf="isAuthFailed">{{'Wrong e-mail or password' | translate}}</span>
+</h1>
+<form [formGroup]="loginForm" #loginFormElem>
   <label>
     <span>E-mail</span>
     <input type="text" formControlName="email" [class.invalid]="isControlInvalid('email')">
