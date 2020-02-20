@@ -13,7 +13,7 @@ import { LogoffComponent } from './logoff/logoff.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { NewCourseModule } from "./new-course/new-course.module";
+// import { NewCourseModule } from "./new-course/new-course.module";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from "@angular/common/http";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
@@ -41,7 +41,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
     AppRouting,
     CoursesModule,
     FormsModule,
-    NewCourseModule,
+    // NewCourseModule,
     HttpClientModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,

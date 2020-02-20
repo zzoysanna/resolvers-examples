@@ -13,6 +13,7 @@
     box-shadow: 0 1px 24px 0 $shadow;
     border: 0;
     cursor: pointer;
+    outline: none;
   }
   amp-course {
     border: 3px solid transparent;
@@ -27,17 +28,26 @@
         font-size: 20px;
         top: -3px;
         right: 1.5rem;
+        @media #{$mobile} {
+          top: 18px;
+        }
       }
     }
-  }
-  amp-add-course {
-    margin-bottom: 12px;
-  }
-  amp-search {
-    margin: 24px 0;
   }
   .nodata {
     text-align: center;
     margin: 2rem 0;
+  }
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    @media #{$mobile} {
+      flex-direction: column;
+    }
+  }
+  .courses-number {
+    margin: 0 0 24px;
   }
 }

@@ -4,16 +4,26 @@
   display: flex;
   overflow: visible;
   align-items: center;
+  @media #{$mobile} {
+    width: 100%;
+    margin-bottom: 24px;
+  }
   .search-field {
     @include input();
-    padding-left: 18px;
+    padding: 0 12px;
     line-height: 48px;
     height: 48px;
-    width: 360px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media #{$mobile} {
+      width: 100%;
+    }
   }
   input {
     @include inputInvisible();
-    width: calc(100% - 40px);
+    flex-grow: 1;
   }
   button {
     @include green-button();
@@ -22,9 +32,6 @@
     font-size: 18px;
     font-weight: 600;
     padding: 0 24px;
-    &.clear {
-      background: $gray-color;
-    }
   }
   mat-icon {
     height: 30px;
@@ -32,5 +39,9 @@
     font-size: 30px;
     vertical-align: middle;
     margin-right: 4px;
+    &.clear {
+      cursor: pointer;
+      opacity: 0.5;
+    }
   }
 }

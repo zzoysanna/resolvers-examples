@@ -9,6 +9,7 @@ import { AuthorsFieldComponent } from './authors-field/authors-field.component';
 import { MatIconModule } from '@angular/material';
 import { TextMaskModule } from 'angular2-text-mask';
 import { NumberDirective } from './number-validator/number.directive';
+import { NewCourseRoutingModule } from "./new-course.routing";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NumberDirective } from './number-validator/number.directive';
     ReactiveFormsModule,
     MatIconModule,
     TextMaskModule,
+    NewCourseRoutingModule,
   ]
 })
 export class NewCourseModule { }
