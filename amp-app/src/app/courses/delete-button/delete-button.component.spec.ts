@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteButtonComponent } from './delete-button.component';
 import { MatIconModule } from "@angular/material";
+import { TranslateModule } from "@ngx-translate/core";
 
 describe('DeleteButtonComponent', () => {
   let component: DeleteButtonComponent;
@@ -10,7 +11,10 @@ describe('DeleteButtonComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DeleteButtonComponent ],
-      imports: [ MatIconModule ]
+      imports: [
+        MatIconModule,
+        TranslateModule.forRoot(),
+      ]
     })
     .compileComponents();
   }));

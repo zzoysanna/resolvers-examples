@@ -1,8 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewCourseComponent } from './new-course.component';
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SharedModule } from "../../shared/shared.module";
+import { TranslateModule } from "@ngx-translate/core";
+import { MatIconModule } from "@angular/material";
+import { TimeFieldComponent } from "../time-field/time-field.component";
+import { DateFieldComponent } from "../date-field/date-field.component";
+import { AuthorsFieldComponent } from "../authors-field/authors-field.component";
+import { TextMaskModule } from "angular2-text-mask";
+import { RouterModule } from "@angular/router";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe('NewCourseComponent', () => {
   let component: NewCourseComponent;
@@ -10,10 +18,21 @@ describe('NewCourseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewCourseComponent ],
+      declarations: [
+        NewCourseComponent,
+        TimeFieldComponent,
+        DateFieldComponent,
+        AuthorsFieldComponent,
+      ],
       imports: [
         FormsModule,
+        ReactiveFormsModule,
         SharedModule,
+        TranslateModule.forRoot(),
+        MatIconModule,
+        TextMaskModule,
+        RouterModule.forRoot([]),
+        HttpClientTestingModule,
       ]
     })
     .compileComponents();

@@ -4,6 +4,7 @@ import { CourseComponent } from './course.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 import { SharedModule } from "../../shared/shared.module";
+import { TranslateModule } from "@ngx-translate/core";
 
 const COURSE = {
   id: '111',
@@ -34,6 +35,7 @@ describe('CourseComponent', () => {
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       imports: [
         SharedModule,
+        TranslateModule.forRoot(),
       ]
     })
     .compileComponents();

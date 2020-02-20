@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoffComponent } from './logoff.component';
+import { TranslateModule } from "@ngx-translate/core";
 
 describe('LogoffComponent', () => {
   let component: LogoffComponent;
@@ -8,7 +9,10 @@ describe('LogoffComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogoffComponent ]
+      declarations: [ LogoffComponent ],
+      imports: [
+        TranslateModule.forRoot(),
+      ]
     })
     .compileComponents();
   }));
