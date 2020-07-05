@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { Author } from "../../../models/author.model";
 
 @Component({
   selector: 'amp-authors',
@@ -9,7 +8,7 @@ import { Author } from "../../../models/author.model";
 })
 export class AuthorsComponent implements OnInit {
 
-  public authors: Author[];
+  public authors: any[];
 
   constructor(
     private route: ActivatedRoute,

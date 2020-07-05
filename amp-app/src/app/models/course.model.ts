@@ -1,5 +1,4 @@
 import { ICourse } from "./course";
-import { Author } from "./author.model";
 
 export class Course implements ICourse {
   constructor(
@@ -9,7 +8,7 @@ export class Course implements ICourse {
     public duration: number,
     public description: string,
     public topRated: boolean,
-    public authors: Author[],
+    public authors: any[],
   ) {
     this.id = id;
     this.title = title;

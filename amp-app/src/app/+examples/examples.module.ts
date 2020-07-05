@@ -4,7 +4,6 @@ import { ExamplesListComponent } from './examples-list/examples-list.component';
 import { ExamplesRoutingModule } from "./examples.routing";
 import { ExampleOneComponent } from './example1/example-one.component';
 import { ExampleTwoComponent } from './example2/example-two.component';
-import { SharedModule } from "../shared/shared.module";
 import { ExampleThreeComponent } from './example3/example-three.component';
 import { ExampleFourComponent } from './example4/example-four.component';
 import { CourseResolver } from "./resolvers/course.resolver";
@@ -29,7 +28,6 @@ import { DescriptionComponent } from './example5/description/description.compone
   ],
   imports: [
     CommonModule,
-    SharedModule,
     ExamplesRoutingModule,
   ],
   providers: [

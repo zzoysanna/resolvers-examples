@@ -1,5 +1,4 @@
 import { AfterContentChecked, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { AuthService } from "../services/auth.service";
 import { Router } from "@angular/router";
 import { LoaderService } from "../services/loader.service";
 import { Subject } from "rxjs";
@@ -14,13 +13,11 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnDestroy, AfterContentChecked{
 
   public title = 'amp-spa';
-  public isAuthorized: boolean;
   public isLoaderShown: boolean;
 
   private destroy = new Subject();
 
   constructor(
-    private authService: AuthService,
     private router: Router,
     private loaderService: LoaderService,
     private cdr: ChangeDetectorRef,
@@ -30,16 +27,6 @@ export class AppComponent implements OnDestroy, AfterContentChecked{
   }
 
   public ngOnInit() {
-    this.authService.checkLogin();
-    // this.authService.isAuthenticated().pipe(
-    //   takeUntil(this.destroy),
-    // ).subscribe(
-    //   auth => {
-    //       this.isAuthorized = auth;
-    //       this.router.navigateByUrl(this.isAuthorized ? 'examples' : 'login')
-    //     },
-    //     error => console.error(error),
-    // );
   }
 
   public ngAfterContentChecked(): void {
