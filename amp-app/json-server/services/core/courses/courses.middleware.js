@@ -24,6 +24,17 @@ module.exports = (server) => {
 		
 		res.json(courses);
 	});
+
+	router.patch('/courses', (req, res, next) => {
+    const id = req.body.id;
+    let courses = server.db.getState().courses;
+    courses.forEach(course => {
+      if(course.id === id) {
+        courses.splice(courses.indexOf(course), 1, req.body)
+      }
+    });
+    res.json(courses);
+  });
 	
 	return router;
 };

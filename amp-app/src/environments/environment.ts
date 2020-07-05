@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   rest: 'http://localhost:3004',
   tokenKey: 'amp-user-token',
+  exampleId: '4980',
 };
 
 /*

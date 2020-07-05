@@ -1,0 +1,19 @@
+@import "../../../variables";
+
+:host {
+  display: flex;
+  justify-content: space-between;
+  overflow: visible;
+  padding: 40px 0;
+  a {
+    line-height: 40px;
+    font-size: 16px;
+    padding: 0 24px;
+    text-decoration: none;
+    display: flex;
+  }
+  .code {
+    width: 100px;
+    height: 100px;
+  }
+}

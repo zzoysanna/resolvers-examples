@@ -1,0 +1,18 @@
+<h1>{{course.title}}</h1>
+<ul>
+  <li>
+    <p class="label">Creation date</p>
+    <p>{{course.creationDate | date}}</p>
+  </li>
+  <li>
+    <p class="label">Duration</p>
+    <p>{{course.duration | duration}}</p>
+  </li>
+</ul>
+
+<div class="options">
+  <a routerLink="./description">Description</a>
+  <a routerLink="./authors">Authors</a>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,21 @@
+@import "../../../variables";
+
+:host {
+  display: block;
+  overflow: visible;
+  .desktop {
+    display: block;
+    @media #{$mobileThin} {
+      display: none;
+    }
+  }
+  .mobile {
+    display: none;
+    width: 32px;
+    height: 32px;
+    background: url('/assets/logo.svg') no-repeat;
+    @media #{$mobileThin} {
+      display: block;
+    }
+  }
+}

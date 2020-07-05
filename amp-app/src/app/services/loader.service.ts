@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,20 +7,22 @@ import {Observable, Subject} from "rxjs";
 export class LoaderService {
 
   private isLoading = new Subject<boolean>();
-
-  constructor() { }
+  private statusArray = [];
 
   public start(): void {
+    this.statusArray.push(1);
     this.isLoading.next(true);
   }
 
   public stop(): void {
-    this.isLoading.next(false);
+    if(this.statusArray.length) {
+      this.statusArray.splice(this.statusArray.length - 1, 1);
+      this.isLoading.next(!!this.statusArray.length)
+    }
   }
 
   public showLoader(): Observable<boolean> {
     return this.isLoading.asObservable();
   }
-
 
 }

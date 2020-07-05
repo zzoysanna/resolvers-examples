@@ -1,0 +1,19 @@
+@import "../../../variables";
+
+:host {
+  overflow: visible;
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  .login {
+    color: white;
+    white-space: nowrap;
+    > * {
+      margin-right: 25px;
+    }
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}

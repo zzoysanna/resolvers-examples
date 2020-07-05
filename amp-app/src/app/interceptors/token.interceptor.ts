@@ -19,12 +19,12 @@ export class TokenInterceptor implements HttpInterceptor {
     const token = localStorage.getItem(environment.tokenKey);
 
     if(req.url.includes(environment.rest) && token) {
-      this.loaderService.start();
+      // this.loaderService.start();
       const newReq = req.clone({
         params: req.params.set('token', token),
       });
       return next.handle(newReq).pipe(
-        finalize(() => this.loaderService.stop()),
+        // finalize(() => this.loaderService.stop()),
       );
     }
 

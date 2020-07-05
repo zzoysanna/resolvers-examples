@@ -3,7 +3,8 @@ import { Course } from "../models/course.model";
 import { BehaviorSubject, Observable, Subscription } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { tap } from "rxjs/operators";
+import { delay, finalize, tap } from "rxjs/operators";
+import { LoaderService } from "./loader.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class CoursesService {
 
   constructor(
     private http: HttpClient,
+    private loading: LoaderService,
   ) { }
 
   get courses(): Course[] {
@@ -43,7 +45,11 @@ export class CoursesService {
   }
 
   public getCoursesAll(): Observable<Course[]> {
-    return this.http.get<Course[]>(`${environment.rest}/courses`);
+    this.loading.start();
+    return this.http.get<Course[]>(`${environment.rest}/courses`).pipe(
+      delay(1000),
+      finalize(() => this.loading.stop())
+    );
   }
 
   public search(query: string): Observable<Course[]> {
@@ -65,16 +71,20 @@ export class CoursesService {
   }
 
   public getCourseById(id: string): Observable<Course> {
-    return this.http.get<Course>(`${environment.rest}/courses/${id}`);
+    this.loading.start();
+    return this.http.get<Course>(`${environment.rest}/courses/${id}`).pipe(
+      delay(2000),
+      finalize(() => this.loading.stop())
+    );
   }
 
-  public updateCourse(newCourse: Course): void {
-    this.courses.forEach((course,i) => {
-      if(course.id === newCourse.id) {
-        this.courses[i] = newCourse;
-      }
-    });
-    this.coursesStream.next(this.courses);
+  public updateCourse(course: Course): void {
+    this.http.patch<Course>(`${environment.rest}/courses`, course).pipe(
+      tap(() => this.coursesStream.next(null)),
+    ).subscribe(
+      () => this.getCourses(),
+      error => console.error(error),
+    );
   }
 
   public removeItem(id: string): Subscription {

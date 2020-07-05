@@ -31,15 +31,15 @@ export class AppComponent implements OnDestroy, AfterContentChecked{
 
   public ngOnInit() {
     this.authService.checkLogin();
-    this.authService.isAuthenticated().pipe(
-      takeUntil(this.destroy),
-    ).subscribe(
-      auth => {
-          this.isAuthorized = auth;
-          this.router.navigateByUrl(this.isAuthorized ? 'courses' : 'login')
-        },
-        error => console.error(error),
-    );
+    // this.authService.isAuthenticated().pipe(
+    //   takeUntil(this.destroy),
+    // ).subscribe(
+    //   auth => {
+    //       this.isAuthorized = auth;
+    //       this.router.navigateByUrl(this.isAuthorized ? 'examples' : 'login')
+    //     },
+    //     error => console.error(error),
+    // );
   }
 
   public ngAfterContentChecked(): void {

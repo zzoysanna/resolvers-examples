@@ -1,0 +1,57 @@
+@import "../../../variables";
+
+:host {
+  width: 368px;
+  box-sizing: border-box;
+  display: block;
+  overflow: visible;
+  background: white;
+  border-radius: 6px;
+  padding: 24px;
+  margin: 15vh auto 0;
+  box-shadow: 0 1px 24px 0 $shadow;
+  h1 {
+    font-size: 24px;
+    margin: 0 0 24px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  label {
+    display: block;
+    margin-bottom: 12px;
+    span {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+  .error, label span.error {
+    color: $error;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 0;
+  }
+
+  input {
+    @include input();
+    height: 36px;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  button {
+    @include green-button();
+    font-size: inherit;
+    line-height: 36px;
+    padding: 0 18px;
+  }
+  footer {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

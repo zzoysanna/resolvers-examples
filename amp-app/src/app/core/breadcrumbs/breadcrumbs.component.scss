@@ -1,0 +1,24 @@
+@import "../../../variables";
+
+:host {
+  display: block;
+  background: white;
+  .inner {
+    max-width: $body-width;
+    width: 100%;
+    margin: 0 auto;
+    color: $button-color;
+    @media screen and (max-width: $body-width){
+      width: calc(100% - 3rem);
+    }
+  }
+  a, span {
+    max-width: $body-width;
+    height: $header-height;
+    margin: 0 auto;
+    line-height: $header-height;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+  }
+}

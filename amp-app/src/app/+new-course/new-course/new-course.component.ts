@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, switchMap, tap } from "rxjs/operators";
+import { filter, map, tap, switchMap } from "rxjs/operators";
 import { Course } from "../../models/course.model";
 import { CoursesService } from "../../services/courses.service";
 import { Author } from "../../models/author.model";
@@ -40,20 +40,24 @@ export class NewCourseComponent implements OnInit {
       switchMap(params => this.courseService.getCourseById(params.get('id'))),
       tap(course => this.course = course),
     ).subscribe(
-      ({title, description, duration, creationDate, authors}) => {
-        this.title = title;
-        this.description = description;
-        this.duration = duration;
-        this.date = this.datePipe.transform(creationDate, 'dd/MM/yyyy');
-        this.authors = authors;
-
-        this.createForm();
-      },
+      () => this.createForm(this.course),
       err => console.error(JSON.stringify(err)),
     );
+
+    this.course = this.route.snapshot.data.course;
+    this.createForm(this.course)
   }
 
-  public createForm(): void {
+  public createForm(course?: Course): void {
+    if(course) {
+      const {title, description, duration, creationDate, authors} = course;
+      this.title = title;
+      this.description = description;
+      this.duration = duration;
+      this.date = this.datePipe.transform(creationDate, 'dd/MM/yyyy');
+      this.authors = authors;
+    }
+
     this.form = this.fb.group({
       'title': [this.title, [Validators.required, Validators.maxLength(50)]],
       'description': [this.description, [Validators.required, Validators.maxLength(500)]],

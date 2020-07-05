@@ -1,0 +1,21 @@
+<h1>{{course.title}}</h1>
+<p>{{course.description}}</p>
+<ul>
+  <li>
+    <p class="label">Creation date</p>
+    <p>{{course.creationDate | date}}</p>
+  </li>
+  <li>
+    <p class="label">Duration</p>
+    <p>{{course.duration | duration}}</p>
+  </li>
+  <li>
+    <p class="label">Authors</p>
+    <p>{{course.authors[0].name}}, {{course.authors[1].name}}, {{course.authors[2].name}}</p>
+  </li>
+</ul>
+
+<h2>Other courses:</h2>
+<ol>
+  <li *ngFor="let item of list">{{item.title}}</li>
+</ol>
